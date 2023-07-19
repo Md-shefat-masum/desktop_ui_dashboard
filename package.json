@@ -1,0 +1,16 @@
+{
+  "name": "desktop_ui_dashboard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "npx sass assets/scss/style.scss assets/styles/style.css -w",
+    "postcss": "npx postcss assets/styles/style.css -o assets/styles/style.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+  }
+}

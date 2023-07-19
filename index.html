@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /> -->
+    <link rel="stylesheet" href="./assets/fonts/google_icon/google_icons.css">
+    <link rel="stylesheet" href="./assets/styles/style.css">
+    <script src="/assets/js/app.js" defer></script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="app_body">
+            <div class="explore_window hide" id="explore_window">
+                <div class="action_bar">
+                    <div class="navigation">
+                        <ul>
+                            <li><a href="#"><span class="material-symbols-outlined fill">arrow_back</span></a></li>
+
+                        </ul>
+                    </div>
+                    <div class="title" id="explore_window_drag">
+                        <h2>User Management - List</h2>
+                    </div>
+                    <div class="control">
+                        <ul>
+                            <li><a href="#" onclick="explore_window.classList.toggle('expand')"><span class="material-symbols-outlined fill">zoom_out_map</span></a></li>
+                            <li><a href="#" onclick="explore_window.classList.toggle('hide')"><span class="material-symbols-outlined fill">remove</span></a></li>
+                            <!-- <li><a href="#" onclick="explore_window.classList.toggle('hide')"><span class="material-symbols-outlined fill">close</span></a></li> -->
+                        </ul>
+                    </div>
+                </div>
+                <div class="content_body">
+                    <div class="data_list">
+                        <div class="table_responsive custom_scroll">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th><input type="checkbox"></th>
+                                        <th>ID</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Email</th>
+                                        <th>Phone Number</th>
+                                        <th>Image</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="all_list">
+                                    <tr id="111" class="">
+                                        <td>
+                                            <span onclick="active_table_row()" class="icon material-symbols-outlined"> add_circle </span>
+                                            <div class="table_action_btns">
+                                                <ul>
+                                                    <li><a href="#">Show</a></li>
+                                                    <li><a href="#">Edit</a></li>
+                                                    <li><a href="#">Delete</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <input type="checkbox">
+                                        </td>
+                                        <td>1</td>
+                                        <td>Md Abdullah</td>
+                                        <td>Mubassir</td>
+                                        <td>abm@ex.com</td>
+                                        <td>+880232353423</td>
+                                        <td>
+                                            <img height="30px" src="/assets/images/avatar.png" alt="">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <script>
+                                    for(i=0;i<10;i++){
+                                        all_list.innerHTML += `
+                                            <tr id="${i}">
+                                                <td>
+                                                    <span onclick="active_table_row()" class="icon material-symbols-outlined"> add_circle </span>
+                                                    <div class="table_action_btns">
+                                                        <ul>
+                                                            <li><a href="#">Show</a></li>
+                                                            <li><a href="#">Edit</a></li>
+                                                            <li><a href="#">Delete</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                                <td><input type="checkbox"></td>
+                                                <td>${i+1}</td>
+                                                <td>Md Abdullah</td>
+                                                <td>Mubassir</td>
+                                                <td>abm@ex.com</td>
+                                                <td>+880232353423</td>
+                                                <td>
+                                                    <img height="30px" src="/assets/images/avatar.png" alt="">
+                                                </td>
+                                            </tr>
+                                        `;
+                                    }
+                                    function active_table_row(){
+                                        let e = event.target.parentNode.parentNode;
+                                        [...document.querySelectorAll('tbody tr')].forEach(el=>{
+                                            if(e.id != el.id){
+                                                el.classList.remove('active')
+                                            }
+                                        });
+                                        e.classList.toggle('active');
+                                    }
+                                        
+                                </script>
+                            </table>
+                        </div>
+                        <div class="pagination_part">
+                            <ul class="pagination">
+                                <li><a href="#">&laquo;</a></li>
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">&raquo;</a></li>
+                            </ul>
+                            <div class="showing">
+                                10 of 100
+                            </div>
+                            <div class="limit">
+                                <select name="" id="">
+                                    <option value="10">10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <div class="action_btns">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <span class="material-symbols-outlined fill">add</span>
+                                    <div class="text">create new</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="material-symbols-outlined fill">download</span>
+                                    <div class="text">Export All</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="material-symbols-outlined fill">upload</span>
+                                    <div class="text">Import All</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="app_nav">
+            <div class="left">
+                <ul class="navigation_list">
+                    <li class="icon_link_li app_drawar_link_li">
+                        <a href="#" class="navigation_link active">
+                            <span class="material-symbols-outlined fill">apps</span>
+                        </a>
+                        <div class="apps_list_drawer">
+                            <div class="content">
+                                <div class="top">
+                                    <div class="profile">
+                                        <div class="img">
+                                            <img src="/assets/images/avatar.png" alt="">
+                                        </div>
+                                        <div class="profile_info">
+                                            <h2>Md. Abudllah</h2>
+                                            <h3>Super admin</h3>
+                                        </div>
+                                    </div>
+                                    <div class="action">
+                                        <ul>
+                                            <li><a href="#"><span
+                                                        class="material-symbols-outlined fill">manage_accounts</span></a>
+                                            </li>
+                                            <li><a href="#"><span
+                                                        class="material-symbols-outlined fill">settings</span></a></li>
+                                            <li><a href="#"><span class="material-symbols-outlined fill">lock</span></a>
+                                            </li>
+                                            <li><a href="#"><span
+                                                        class="material-symbols-outlined fill">power_settings_new</span></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="search">
+                                    <input type="search" placeholder="search..">
+                                </div>
+                                <div class="menu_list custom_scroll">
+                                    <div class="menu_apart">
+                                        <h4>At a glance</h4>
+                                        <ul>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon bg_color_1">
+                                                        <span class="material-symbols-outlined fill">monitoring</span>
+                                                    </div>
+                                                    <div class="text">
+                                                        Visitor Report
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon bg_color_2">
+                                                        <span class="material-symbols-outlined fill">query_stats</span>
+                                                    </div>
+                                                    <div class="text">
+                                                        Analytics
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="menu_apart">
+                                        <h4>Apps</h4>
+                                        <ul>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon bg_color_3">
+                                                        <span class="material-symbols-outlined fill">fact_check</span>
+                                                    </div>
+                                                    <div class="text">
+                                                        Todo
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon bg_color_4">
+                                                        <span
+                                                            class="material-symbols-outlined fill">calendar_month</span>
+                                                    </div>
+                                                    <div class="text">
+                                                        Calendar
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon bg_color_5">
+                                                        <span class="material-symbols-outlined fill">calculate</span>
+                                                    </div>
+                                                    <div class="text">
+                                                        Calculator
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon bg_color_6">
+                                                        <span class="material-symbols-outlined fill">email</span>
+                                                    </div>
+                                                    <div class="text">
+                                                        Messages
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="menu_apart">
+                                        <h4>Management</h4>
+                                        <ul>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon bg_color_7">
+                                                        <span
+                                                            class="material-symbols-outlined fill">supervisor_account</span>
+                                                    </div>
+                                                    <div class="text">
+                                                        Users
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon bg_color_8">
+                                                        <span
+                                                            class="material-symbols-outlined fill">card_membership</span>
+                                                    </div>
+                                                    <div class="text">
+                                                        Subscribers
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon bg_color_9">
+                                                        <span class="material-symbols-outlined fill">news</span>
+                                                    </div>
+                                                    <div class="text">
+                                                        Blog
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon bg_color_10">
+                                                        <span
+                                                            class="material-symbols-outlined fill">format_list_bulleted_add</span>
+                                                    </div>
+                                                    <div class="text">
+                                                        Products
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="menu_apart">
+                                        <h4>Frontend Management</h4>
+                                        <ul>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon bg_color_11">
+                                                        <span class="material-symbols-outlined fill">image</span>
+                                                    </div>
+                                                    <div class="text">
+                                                        Banners
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon bg_color_1">
+                                                        <span
+                                                            class="material-symbols-outlined fill">speaker_notes</span>
+                                                    </div>
+                                                    <div class="text">
+                                                        Notice
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="icon_link_li"><a href="#" class="navigation_link"><span
+                                class="material-symbols-outlined fill">search</span></a></li>
+                    <li class="icon_link_li"><a href="#" class="navigation_link"><span
+                                class="material-symbols-outlined fill">mail</span></a></li>
+                    <li class="icon_link_li"><a href="#" class="navigation_link"><span
+                                class="material-symbols-outlined fill">event</span></a></li>
+                    <li class="icon_link_li"><a href="#" class="navigation_link"><span
+                                class="material-symbols-outlined fill">checklist</span></a></li>
+                </ul>
+            </div>
+            <div class="active_window">
+                <ul>
+                    <li><a onclick="explore_window.classList.toggle('hide')" href="#">user management</a></li>
+                </ul>
+            </div>
+            <div class="right">
+                <ul class="navigation_list">
+                    <li class="icon_link_li"><a href="#"  class="navigation_link"><span
+                                class="material-symbols-outlined fill">expand_less</span></a></li>
+                    <li class="icon_link_li"><a href="#" onclick="full_screen()" class="navigation_link"><span
+                                class="material-symbols-outlined fill">fullscreen</span></a></li>
+                    <li class="icon_link_li"><a href="#" class="navigation_link"><span
+                                class="material-symbols-outlined fill">settings</span></a></li>
+                    <li class="icon_link_li"><a href="#" class="navigation_link"><span
+                                class="material-symbols-outlined fill">wifi</span></a></li>
+
+                    <li class="nave_date_time">
+                        <a href="#" class="">
+                            <span>09:47:34</span>
+                            <span class="meridian">AM</span>
+                            <span>Tue 18 Nov</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
