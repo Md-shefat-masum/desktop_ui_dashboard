@@ -12,14 +12,17 @@
 
 <script>
 import { mapState } from 'pinia';
-import AllBlog from './views/blog/AllBlog.vue';
 import Nav from './views/includes/Nav.vue';
-import AllUser from './views/user/AllUser.vue';
 import { useCounterStore } from './stores/counter';
+
+import AllBlog from './views/blog/AllBlog.vue';
+import AllUser from './views/user/AllUser.vue';
+import AllContact from './views/AllContact.vue';
+import AllSubscriber from './views/AllSubscriber.vue';
 export default {
-    components: { Nav, AllBlog, AllUser },
+    components: { Nav, AllBlog, AllUser, AllContact, AllSubscriber },
     computed: {
-        ...mapState(useCounterStore,['active_windows']),
+        ...mapState(useCounterStore, ['active_windows']),
     }
 }
 </script>

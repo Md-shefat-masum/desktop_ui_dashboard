@@ -129,6 +129,7 @@ img {
   --brand_color2: #5e6169;
   --brand_color3: #2d313a;
   --brand_color4: #292d36;
+  --brand_dark: #20232a;
   --brand_white: #dcdfe4;
   --brand_white2: #9b9fa5;
   --color_white: #f5f5f5;
@@ -237,7 +238,6 @@ img {
   width: calc(100vw - 60px);
   margin: 0 auto;
   max-width: var(--container_width);
-  border: 1px solid rgba(255, 255, 255, 0.199);
   padding-bottom: 10px;
   position: relative;
 }
@@ -320,7 +320,7 @@ img {
 }
 .app_nav .app_drawar_link_li .apps_list_drawer::before {
   content: "";
-  background-color: rgba(0, 0, 0, 0.548);
+  background-color: var(--brand_color3);
   position: absolute;
   border-radius: 5px;
   height: 100%;
@@ -328,6 +328,7 @@ img {
   top: 0;
   left: 0;
   z-index: 0;
+  opacity: 0.9;
 }
 .app_nav .app_drawar_link_li .apps_list_drawer .content {
   position: relative;
@@ -562,9 +563,9 @@ img {
   opacity: 0.7;
 }
 .explore_window .action_bar {
-  background-color: var(--brand_color);
+  background-color: var(--brand_dark);
   display: grid;
-  grid-template-columns: 1fr 200px 1fr;
+  grid-template-columns: 1fr 300px 1fr;
   justify-content: space-between;
   padding: 5px;
   position: relative;
@@ -611,6 +612,7 @@ img {
   z-index: 9;
   height: calc(100% - 70px);
   padding: 10px;
+  border: 1px solid var(--brand_dark);
 }
 .explore_window .footer {
   position: relative;
@@ -694,7 +696,7 @@ img {
   position: sticky;
   top: 0;
   left: 0;
-  background-color: var(--brand_color);
+  background-color: var(--brand_dark);
   z-index: 99;
 }
 .table_responsive table thead tr th,
@@ -707,6 +709,9 @@ img {
   border-style: solid;
   border-bottom-width: 1px;
   position: relative;
+}
+.table_responsive table tbody tr:hover, .table_responsive table tbody tr.active {
+  background: var(--brand_color2);
 }
 .table_responsive table tbody tr.active {
   border-left-width: 4px;
@@ -729,12 +734,12 @@ img {
   left: -6px;
   padding: 10px 10px;
   border-left: 4px solid var(--brand_white);
-  background-color: #282d3d;
   width: calc(100% + 6px);
   display: none;
   /* bottom: 0; */
   z-index: 9;
   height: 42px;
+  background-color: var(--brand_dark);
 }
 .table_responsive table tbody tr td:nth-child(1) .table_action_btns ul {
   display: flex;

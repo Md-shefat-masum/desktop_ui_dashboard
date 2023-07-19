@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import AllUser from '../views/user/AllUser.vue'
 import AllBlog from '../views/blog/AllBlog.vue'
+import AllContact from '../views/AllContact.vue'
+import AllSubscriber from '../views/AllSubscriber.vue'
 
 Vue.use(VueRouter)
 
@@ -24,6 +26,16 @@ const router = new VueRouter({
       path: '/blog',
       name: 'blog',
       component: AllBlog
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: AllContact
+    },
+    {
+      path: '/subscriber',
+      name: 'subscriber',
+      component: AllSubscriber
     },
     {
       path: '/about',

@@ -121,7 +121,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a @click="push_windows(`AllSubscriber`)" href="#">
                                                 <div class="icon bg_color_8">
                                                     <span class="material-symbols-outlined fill">card_membership</span>
                                                 </div>
@@ -141,13 +141,13 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a @click="push_windows(`AllContact`)"  href="#">
                                                 <div class="icon bg_color_10">
                                                     <span
                                                         class="material-symbols-outlined fill">format_list_bulleted_add</span>
                                                 </div>
                                                 <div class="text">
-                                                    Products
+                                                    Contacts
                                                 </div>
                                             </a>
                                         </li>

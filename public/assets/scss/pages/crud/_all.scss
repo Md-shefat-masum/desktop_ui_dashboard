@@ -62,7 +62,7 @@
             position: sticky;
             top: 0;
             left: 0;
-            background-color: var(--brand_color);
+            background-color: var(--brand_dark);
             z-index: 99;
 
             tr {
@@ -83,6 +83,12 @@
                 border-bottom-width: 1px;
                 position: relative;
 
+                &:hover,
+                &.active {
+                    background: var(--brand_color2);
+                    // background: linear-gradient(90deg, var(--brand_color2) 20%, rgba(94, 97, 105, 0.1) 80%);
+                }
+
                 &.active {
                     border-left-width: 4px;
                     border-bottom-width: 40px;
@@ -99,37 +105,43 @@
                 }
 
                 td {
+
                     &:nth-child(1),
                     &:nth-child(2) {
                         width: 20px;
                     }
+
                     &:nth-child(1) {
-                        .icon{
+                        .icon {
                             cursor: pointer;
                         }
+
                         .table_action_btns {
                             position: absolute;
                             top: 42px;
                             left: -6px;
                             padding: 10px 10px;
                             border-left: 4px solid var(--brand_white);
-                            background-color: #282d3d;
                             width: calc(100% + 6px);
                             display: none;
                             /* bottom: 0; */
                             z-index: 9;
                             height: 42px;
+                            background-color: var(--brand_dark);
+                            // background: rgb(32, 35, 42);
+                            // background: linear-gradient(90deg, rgb(32, 35, 42) 29%, rgba(32, 35, 42, 0.8) 80%);
 
                             ul {
                                 display: flex;
                                 gap: 10px;
 
-                                li{
-                                    a{
+                                li {
+                                    a {
                                         background-color: transparent;
                                         padding: 5px 10px;
                                         border-radius: 3px;
-                                        &:hover{
+
+                                        &:hover {
                                             background-color: rgba(128, 128, 128, 0.123);
                                         }
                                     }

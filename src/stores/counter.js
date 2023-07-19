@@ -9,6 +9,10 @@ export const useCounterStore = defineStore({
     AllUser_expand: false,
     AllBlog_hide: false,
     AllBlog_expand: false,
+    AllContact_hide: false,
+    AllContact_expand: false,
+    AllSubscriber_hide: false,
+    AllSubscriber_expand: false,
   }),
   getters: {
     doubleCount: (state) => state.counter * 2
