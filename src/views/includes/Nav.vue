@@ -195,7 +195,7 @@
         <div class="active_window">
             <ul>
                 <!-- <li>{{ active_windows.length }}</li> -->
-                <li v-for="i in active_windows" :key="i"><a @click="push_windows(i); toggle_hide(i)" href="#" >{{ i }}</a></li>
+                <li v-for="(i,index) in active_windows" :key="index"><a @click="push_windows(i.el); toggle_hide(i.el)" href="#" >{{ i.el }}</a></li>
             </ul>
         </div>
         <div class="right">

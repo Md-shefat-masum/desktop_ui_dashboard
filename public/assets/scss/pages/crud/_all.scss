@@ -34,8 +34,12 @@
         }
 
         .limit {
-            option {
-                background-color: var(--brand_color);
+            select{
+                padding: 5px;
+                font-size: 13px;
+                option {
+                    background-color: var(--brand_color);
+                }
             }
         }
     }

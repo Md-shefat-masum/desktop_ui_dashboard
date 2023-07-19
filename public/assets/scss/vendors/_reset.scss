@@ -78,7 +78,7 @@ td {
     font-family: "ubutu";
 }
 
-div{
+div {
     transition-duration: .2s;
 }
 
@@ -86,6 +86,47 @@ div{
 /* Additional CSS reset rules */
 body {
     line-height: 1;
+}
+
+label {
+    display: block;
+    display: flex;
+    align-items: center;
+    color: var(--brand_white);
+    text-transform: capitalize;
+    margin-bottom: 8px;
+    gap: 5px;
+    cursor: pointer;
+    .text{
+        position: relative;
+        &.required{
+            &::after{
+                content: '*';
+                color: var(--color_warning);
+                margin-left: 4px;
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+input,
+select,
+textarea {
+    background: transparent;
+    box-sizing: border-box;
+    outline: 0;
+    border: var(--brand_white);
+    border-radius: 5px;
+    padding: 10px;
+    color: var(--brand_white);
+    font-size: 15px;
+    border: 1px solid var(--brand_color2);
+
+    &:focus {
+        border: 1px solid var(--brand_white);
+        background-color: var(--brand_color3);
+    }
 }
 
 ol,
@@ -109,18 +150,18 @@ p,
 li,
 input,
 textarea,
-option{
+option {
     color: var(--brand_white);
 }
 
 a,
 span,
-i{
+i {
     display: inline-block;
     text-decoration: none;
 }
 
-img{
+img {
     object-fit: cover;
     object-position: center;
 }

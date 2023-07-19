@@ -1,13 +1,19 @@
 <template>
-    <div :class="`explore_window ${this[page+'_expand'] && 'expand'} ${this[page+'_hide'] && 'hide'}`" @click="push_windows(page)" :id="page">
+    <div :class="`explore_window ${this[page+'_expand'] && 'expand'} ${this[page+'_hide'] && 'hide'}`" 
+        @click="push_windows(page, $event)" 
+        :style="{zIndex: el.zindex}"
+        :id="page">
         <div class="action_bar">
             <div class="navigation">
                 <ul>
-                    <li><a href="#"><span class="material-symbols-outlined fill">arrow_back</span></a></li>
+                    <li class="search_li">
+                        <!-- <a href="#" @click="show_search = !show_search"><span class="material-symbols-outlined fill">search</span></a> -->
+                        <input class="search" :class="{active: show_search}" id="table_search_box" type="search">
+                    </li>
                 </ul>
             </div>
             <div class="title" :id="`${page}_drag`">
-                <h2>User Management - List</h2>
+                <h2>{{page}} - List</h2>
             </div>
             <div class="control">
                 <ul>
@@ -40,8 +46,8 @@
                                     </span>
                                     <div class="table_action_btns">
                                         <ul>
-                                            <li><a href="#">Show</a></li>
-                                            <li><a href="#">Edit</a></li>
+                                            <li><a @click="$event.stopPropagation(); push_windows('DetailsUser')" href="#">Show</a></li>
+                                            <li><a @click="$event.stopPropagation(); push_windows('EditUser')" href="#">Edit</a></li>
                                             <li><a href="#">Delete</a></li>
                                         </ul>
                                     </div>
@@ -71,7 +77,7 @@
                         <li><a href="#">&raquo;</a></li>
                     </ul>
                     <div class="showing">
-                        10 of 100
+                        10 - 20 of 100
                     </div>
                     <div class="limit">
                         <select name="" id="">
@@ -88,7 +94,7 @@
             <div class="action_btns">
                 <ul>
                     <li>
-                        <a href="#">
+                        <a href="#" @click="$event.stopPropagation(); push_windows('CreateUser')" >
                             <span class="material-symbols-outlined fill">add</span>
                             <div class="text">create new</div>
                         </a>
@@ -116,11 +122,11 @@ import { mapActions, mapState } from 'pinia';
 import { useCounterStore } from '../../stores/counter';
 let page = 'AllUser'
 export default {
+    props: ['el'],
     data: function(){
         return {
             page: page,
-            is_expand: false,
-            is_hide: false,
+            show_search: false,
         }
     },
     created: function(){
