@@ -4,11 +4,11 @@ export const useCounterStore = defineStore({
   id: 'counter',
   state: () => ({
     counter: 0,
-    active_windows_zindex: 900,
+    active_windows_zindex: 10,
     active_windows: [
       {
         el: 'AllUser',
-        zindex: 900,
+        zindex: 10,
       }
     ],
 

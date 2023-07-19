@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import AllUser from '../views/user/AllUser.vue'
 import AllBlog from '../views/blog/AllBlog.vue'
 import AllContact from '../views/AllContact.vue'
 import AllSubscriber from '../views/AllSubscriber.vue'
@@ -16,11 +15,6 @@ const router = new VueRouter({
       path: '/',
       name: 'home',
       component: HomeView
-    },
-    {
-      path: '/user',
-      name: 'user',
-      component: AllUser
     },
     {
       path: '/blog',

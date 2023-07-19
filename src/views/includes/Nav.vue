@@ -111,7 +111,7 @@
                                     <h4>Management</h4>
                                     <ul>
                                         <li>
-                                            <a @click="push_windows(`AllUser`)" href="#">
+                                            <a @click="push_windows(`users`)" href="#">
                                                 <div class="icon bg_color_7">
                                                     <span class="material-symbols-outlined fill">supervisor_account</span>
                                                 </div>
@@ -223,18 +223,18 @@
 
 <script>
 import { mapActions, mapState } from 'pinia';
-import { useCounterStore } from '../../stores/counter';
+import { ui_store } from '../../stores/ui_store';
 
 export default {
     
     methods: {
-        ...mapActions(useCounterStore,{
+        ...mapActions(ui_store,{
             push_windows: "push_windows",
             toggle_hide: "toggle_hide",
         })
     },
     computed: {
-        ...mapState(useCounterStore, ['active_windows'])
+        ...mapState(ui_store, ['active_windows'])
     }
 }
 </script>
