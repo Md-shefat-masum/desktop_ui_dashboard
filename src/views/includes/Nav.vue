@@ -121,7 +121,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a @click="push_windows(`AllSubscriber`)" href="#">
+                                            <a href="#">
                                                 <div class="icon bg_color_8">
                                                     <span class="material-symbols-outlined fill">card_membership</span>
                                                 </div>
@@ -131,7 +131,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a @click="push_windows(`AllBlog`)" href="#">
+                                            <a @click="push_windows(`blogs`)" href="#">
                                                 <div class="icon bg_color_9">
                                                     <span class="material-symbols-outlined fill">news</span>
                                                 </div>
@@ -141,10 +141,9 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a @click="push_windows(`AllContact`)"  href="#">
+                                            <a href="#">
                                                 <div class="icon bg_color_10">
-                                                    <span
-                                                        class="material-symbols-outlined fill">format_list_bulleted_add</span>
+                                                    <span class="material-symbols-outlined fill">format_list_bulleted_add</span>
                                                 </div>
                                                 <div class="text">
                                                     Contacts

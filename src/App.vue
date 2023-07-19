@@ -1,10 +1,9 @@
 <template>
     <div id="app">
         <div class="app_body">
-            <!-- <all-blog></all-blog> -->
             <!-- <component v-for="i in active_windows" :key="i.el" :is="i.el" v-bind="{el: i}"></component> -->
-            <!-- <all-user></all-user> -->
             <UserRender></UserRender>
+            <BlogRender></BlogRender>
             <router-view></router-view>
         </div>
         <Nav></Nav>
@@ -22,10 +21,10 @@ import { ui_store } from './stores/ui_store';
 import Nav from './views/includes/Nav.vue';
 
 import UserRender from './views/user/Render.vue';
-
+import BlogRender from './views/blog/Render.vue';
 
 export default {
-    components: { Nav, UserRender },
+    components: { Nav, UserRender, BlogRender },
     created: function(){
         // this.$watch('active_windows',function(v){
         //     console.log(v);
