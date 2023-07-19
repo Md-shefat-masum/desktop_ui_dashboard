@@ -1,0 +1,22 @@
+{
+  "name": "desktop_ui_dashbaord_vue",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4173",
+    "scss": "npx sass public/assets/scss/style.scss public/assets/styles/style.css -w",
+    "postcss": "npx postcss public/assets/styles/style.css -o public/assets/styles/style.css"
+  },
+  "dependencies": {
+    "pinia": "^2.0.16",
+    "vue": "^2.7.7",
+    "vue-router": "^3.5.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-legacy": "^2.0.0",
+    "@vitejs/plugin-vue2": "^1.1.2",
+    "terser": "^5.14.2",
+    "vite": "^3.0.2"
+  }
+}
