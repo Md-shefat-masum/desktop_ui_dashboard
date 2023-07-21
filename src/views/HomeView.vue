@@ -1,13 +1,17 @@
 <template>
-    <div>
-      <h1></h1>
-    </div>
+  <div>
+    <calendar></calendar>
+    <todo></todo>
+    <home-time-date></home-time-date>
+  </div>
 </template>
 
 <script>
-export default {
+import Calendar from "../components/Calendar.vue";
+import HomeTimeDate from '../components/HomeTimeDate.vue';
+import Todo from '../components/Todo.vue';
 
+export default {
+  components: {Calendar, Todo, HomeTimeDate},
 }
 </script>
-
-<style></style>
