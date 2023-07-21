@@ -1,3 +1,12 @@
+.app_window{
+    position: absolute;
+    @for $i from 1 through 15 {
+        &:nth-child(#{$i}) {
+          top: $i * 30 + 20px;
+          left: $i * 30 + 20px;
+        }
+    }
+}
 .explore_window {
     position: absolute;
     height: calc(100vh - 280px);
@@ -131,7 +140,7 @@
         flex: 1;
         position: relative;
         z-index: 9;
-        height: calc(100% - 70px);
+        height: calc(100% - 77px);
         padding: 10px;
     }
 
