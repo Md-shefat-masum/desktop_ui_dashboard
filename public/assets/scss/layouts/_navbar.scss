@@ -12,10 +12,10 @@
     border: 1px solid var(--brand_color2);
 
     $icon_block_size: 20px;
-    
+
     .left,
     .active_window,
-    .right{
+    .right {
         width: calc(100% / 3);
     }
 
@@ -23,19 +23,52 @@
         justify-content: flex-start;
     }
 
-    .active_window{
-        ul{
+    .active_window {
+        ul {
             display: flex;
             gap: 10px;
             height: 100%;
             justify-content: center;
             align-items: center;
-            li{
-                a{
+
+            li {
+                display: flex;
+                gap: 7px;
+                align-items: center;
+                padding: 0px 3px;
+                border-radius: 3px;
+
+                &:hover{
+                    background-color: var(--brand_color2);
+                    a{
+                        color: var(--brand_white);
+                    }
+                    .action {
+                        display: block;
+                        span {
+                            &.close {
+                                color: rgba(233, 70, 20, 1);
+                            }
+                        }
+                    }
+                }
+
+                a {
                     font-size: 14px;
                     color: var(--brand_white2);
-                    &:hover{
-                        color: var(--brand_white);
+                }
+
+                .action {
+                    display: none;
+                    span {
+                        cursor: pointer;
+                        color: var(--brand_white2);
+                        &.close {
+                            font-size: 16px;
+                            line-height: 17px;
+                            position: relative;
+                            top: 2px;
+                        }
                     }
                 }
             }
@@ -46,7 +79,7 @@
         display: flex;
         gap: 10px;
         justify-content: flex-end;
-        
+
         .icon_link_li {
             height: $icon_block_size;
             width: $icon_block_size;
@@ -86,7 +119,8 @@
 
         &:hover {
             .apps_list_drawer {
-                bottom: 30px;
+                bottom: 32px;
+                left: -12px;
                 z-index: 1;
                 opacity: 1;
                 visibility: visible;
