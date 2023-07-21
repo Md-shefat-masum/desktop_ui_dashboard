@@ -1,7 +1,7 @@
 .explore_window {
     position: absolute;
-    height: 700px;
-    width: 992px;
+    height: calc(100vh - 280px);
+    width: calc(60vw + 100px);
     // border: var(--border);
     resize: both;
     overflow: hidden;
