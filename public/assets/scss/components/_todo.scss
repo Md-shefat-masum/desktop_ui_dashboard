@@ -1,6 +1,8 @@
 .todo_app{
     position: absolute;
     right: 0;
+    z-index: 20;
+    backdrop-filter: blur(7px);
     top: 300px;
     .todo_app_body{
         width: 258px;
