@@ -4,8 +4,8 @@
     width: 100%;
     
     @for $i from 1 through 15 {
-        .explore_window{
-            &:nth-child(#{$i}) {
+        &:nth-child(#{$i}) {
+            .explore_window{
               top: $i * 30 + 20px;
               left: $i * 30 + 20px;
             }
