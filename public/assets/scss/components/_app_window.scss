@@ -1,9 +1,14 @@
 .app_window{
     position: absolute;
+    height: 100%;
+    width: 100%;
+    
     @for $i from 1 through 15 {
-        &:nth-child(#{$i}) {
-          top: $i * 30 + 20px;
-          left: $i * 30 + 20px;
+        .explore_window{
+            &:nth-child(#{$i}) {
+              top: $i * 30 + 20px;
+              left: $i * 30 + 20px;
+            }
         }
     }
 }
