@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="app_window">
         <!-- <component v-for="(i,index) in components" :key="index" :is="i"></component> -->
         <all></all>
         <create></create>
