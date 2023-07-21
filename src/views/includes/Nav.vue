@@ -121,22 +121,22 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
-                                                <div class="icon bg_color_8">
-                                                    <span class="material-symbols-outlined fill">card_membership</span>
-                                                </div>
-                                                <div class="text">
-                                                    Subscribers
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
                                             <a @click="push_windows(`blogs`)" href="#">
                                                 <div class="icon bg_color_9">
                                                     <span class="material-symbols-outlined fill">news</span>
                                                 </div>
                                                 <div class="text">
                                                     Blog
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <div class="icon bg_color_8">
+                                                    <span class="material-symbols-outlined fill">card_membership</span>
+                                                </div>
+                                                <div class="text">
+                                                    Subscribers
                                                 </div>
                                             </a>
                                         </li>
