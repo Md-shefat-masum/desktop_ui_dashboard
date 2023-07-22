@@ -41,24 +41,24 @@
                                     <h4>At a glance</h4>
                                     <ul>
                                         <li>
-                                            <a href="#">
+                                            <router-link to="/">
                                                 <div class="icon bg_color_1">
                                                     <span class="material-symbols-outlined fill">monitoring</span>
                                                 </div>
                                                 <div class="text">
-                                                    Visitor Report
+                                                    Dashboard
                                                 </div>
-                                            </a>
+                                            </router-link>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <router-link :to="{ name: 'analytics' }" href="#">
                                                 <div class="icon bg_color_2">
                                                     <span class="material-symbols-outlined fill">query_stats</span>
                                                 </div>
                                                 <div class="text">
                                                     Analytics
                                                 </div>
-                                            </a>
+                                            </router-link>
                                         </li>
                                     </ul>
                                 </div>
@@ -121,6 +121,7 @@
                                             </a>
                                         </li>
                                         <li>
+<<<<<<< HEAD
                                             <a @click="push_windows(`courses`)" href="#">
                                                 <div class="icon bg_color_8">
                                                     <span class="material-symbols-outlined fill">card_membership</span>
@@ -131,6 +132,8 @@
                                             </a>
                                         </li>
                                         <li>
+=======
+>>>>>>> b698b850b21804e407c80c73dd2d8c7e576dcb76
                                             <a @click="push_windows(`blogs`)" href="#">
                                                 <div class="icon bg_color_9">
                                                     <span class="material-symbols-outlined fill">news</span>
@@ -142,8 +145,19 @@
                                         </li>
                                         <li>
                                             <a href="#">
+                                                <div class="icon bg_color_8">
+                                                    <span class="material-symbols-outlined fill">card_membership</span>
+                                                </div>
+                                                <div class="text">
+                                                    Subscribers
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
                                                 <div class="icon bg_color_10">
-                                                    <span class="material-symbols-outlined fill">format_list_bulleted_add</span>
+                                                    <span
+                                                        class="material-symbols-outlined fill">format_list_bulleted_add</span>
                                                 </div>
                                                 <div class="text">
                                                     Contacts
@@ -181,20 +195,42 @@
                         </div>
                     </div>
                 </li>
-                <li class="icon_link_li"><a href="#" class="navigation_link"><span
-                            class="material-symbols-outlined fill">search</span></a></li>
-                <li class="icon_link_li"><a href="#" class="navigation_link"><span
-                            class="material-symbols-outlined fill">mail</span></a></li>
-                <li class="icon_link_li"><a href="#" class="navigation_link"><span
-                            class="material-symbols-outlined fill">event</span></a></li>
-                <li class="icon_link_li"><a href="#" class="navigation_link"><span
-                            class="material-symbols-outlined fill">checklist</span></a></li>
+                <!-- <li class="icon_link_li">
+                    <a href="#" class="navigation_link">
+                        <span class="material-symbols-outlined fill">search</span>
+                    </a>
+                </li> -->
+                <li class="icon_link_li">
+                    <router-link to="/" class="navigation_link">
+                        <span class="material-symbols-outlined fill">home</span>
+                    </router-link>
+                </li>
+                <li class="icon_link_li">
+                    <a href="#" class="navigation_link">
+                        <span class="material-symbols-outlined fill">mail</span>
+                    </a>
+                </li>
+                <li class="icon_link_li">
+                    <a href="#" class="navigation_link">
+                        <span class="material-symbols-outlined fill">event</span>
+                    </a>
+                </li>
+                <li class="icon_link_li">
+                    <a href="#" class="navigation_link">
+                        <span class="material-symbols-outlined fill">checklist</span>
+                    </a>
+                </li>
             </ul>
         </div>
         <div class="active_window">
             <ul>
                 <!-- <li>{{ active_windows.length }}</li> -->
-                <li v-for="(i,index) in active_windows" :key="index"><a @click="push_windows(i.el); toggle_hide(i.el)" href="#" >{{ i.el }}</a></li>
+                <li v-for="(i, index) in active_windows" :key="index">
+                    <a @click="push_windows(i.el); toggle_hide(i.el)" href="#">{{ i.el }}</a>
+                    <div class="action">
+                        <span @click="close_page(i.el)" class="material-symbols-outlined close fill"> close </span>
+                    </div>
+                </li>
             </ul>
         </div>
         <div class="right">
@@ -225,11 +261,12 @@ import { mapActions, mapState } from 'pinia';
 import { ui_store } from '../../stores/ui_store';
 
 export default {
-    
+
     methods: {
-        ...mapActions(ui_store,{
+        ...mapActions(ui_store, {
             push_windows: "push_windows",
             toggle_hide: "toggle_hide",
+            close_page: "close_page",
         })
     },
     computed: {

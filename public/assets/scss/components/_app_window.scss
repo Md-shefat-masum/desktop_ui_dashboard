@@ -1,7 +1,21 @@
+.app_window{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    
+    @for $i from 1 through 15 {
+        &:nth-child(#{$i}) {
+            .explore_window{
+              top: $i * 30 + 20px;
+              left: $i * 30 + 20px;
+            }
+        }
+    }
+}
 .explore_window {
     position: absolute;
-    height: 700px;
-    width: 992px;
+    height: calc(100vh - 280px);
+    width: calc(60vw + 100px);
     // border: var(--border);
     resize: both;
     overflow: hidden;
@@ -131,7 +145,7 @@
         flex: 1;
         position: relative;
         z-index: 9;
-        height: calc(100% - 70px);
+        height: calc(100% - 77px);
         padding: 10px;
     }
 

@@ -9,6 +9,7 @@
     "postcss": "npx postcss public/assets/styles/style.css -o public/assets/styles/style.css"
   },
   "dependencies": {
+    "chart.js": "^4.3.0",
     "pinia": "^2.0.16",
     "vue": "^2.7.7",
     "vue-router": "^3.5.4"

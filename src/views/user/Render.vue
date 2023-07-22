@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="app_window">
         <all></all>
         <create></create>
         <Details></Details>

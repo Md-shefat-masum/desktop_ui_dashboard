@@ -4,7 +4,7 @@ export const ui_store = defineStore({
     id: 'ui_store',
     state: () => ({
         /* zindex increment by selecting window */
-        active_windows_zindex: 10,
+        active_windows_zindex: 50,
         active_single_window: {},
         active_windows: [],
     }),
