@@ -121,19 +121,6 @@
                                             </a>
                                         </li>
                                         <li>
-<<<<<<< HEAD
-                                            <a @click="push_windows(`courses`)" href="#">
-                                                <div class="icon bg_color_8">
-                                                    <span class="material-symbols-outlined fill">card_membership</span>
-                                                </div>
-                                                <div class="text">
-                                                    Subscribers
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-=======
->>>>>>> b698b850b21804e407c80c73dd2d8c7e576dcb76
                                             <a @click="push_windows(`blogs`)" href="#">
                                                 <div class="icon bg_color_9">
                                                     <span class="material-symbols-outlined fill">news</span>
