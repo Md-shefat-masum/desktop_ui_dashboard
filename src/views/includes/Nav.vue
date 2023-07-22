@@ -121,7 +121,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a @click="push_windows(`courses`)" href="#">
                                                 <div class="icon bg_color_8">
                                                     <span class="material-symbols-outlined fill">card_membership</span>
                                                 </div>
