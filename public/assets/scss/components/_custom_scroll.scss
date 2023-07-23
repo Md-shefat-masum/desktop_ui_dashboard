@@ -1,0 +1,29 @@
+.custom_scroll {
+    overflow: auto;
+    /* width */
+    &:hover{
+        &::-webkit-scrollbar {
+            width: 7px;
+        }
+    }
+    &::-webkit-scrollbar {
+        width: 0px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+        background: var(--brand_color2);
+        border-radius: 25px;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background: var(--brand_color);
+        border-radius: 25px;
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+        background: var(--brand_white2);
+    }
+}

@@ -1,0 +1,26 @@
+.card{
+    padding: 11px;
+    border-radius: 3px;
+    border: 1px solid var(--brand_color2);
+    color: var(--brand_white2);
+    position: relative;
+    width: fit-content;
+
+    &::after{
+        background-color: var(--brand_color);
+        border-radius: 3px;
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        opacity: .5;
+        z-index: 1;
+    }
+
+    &>div{
+        position: relative;
+        z-index: 9;
+    }
+}

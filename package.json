@@ -1,0 +1,23 @@
+{
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "scss": "npx sass public/assets/scss/style.scss public/assets/styles/style.css -w",
+        "postcss": "npx postcss public/assets/styles/style.css -o public/assets/styles/style.css"
+    },
+    "devDependencies": {
+        "@popperjs/core": "^2.11.6",
+        "@vitejs/plugin-vue": "^4.2.3",
+        "axios": "^1.1.2",
+        "laravel-vite-plugin": "^0.7.5",
+        "vite": "^4.0.0"
+    },
+    "dependencies": {
+        "chart.js": "^4.3.0",
+        "pinia": "^2.1.4",
+        "vue": "^3.2.41",
+        "vue-router": "^4.2.4"
+    }
+}

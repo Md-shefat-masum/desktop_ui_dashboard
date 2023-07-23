@@ -1,0 +1,32 @@
+POST  http://127.0.0.1:8000/api/v1/user/api-login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "superadmin@gmail.com",
+    "password": "12345678"
+}
+
+###
+GET  http://127.0.0.1:8000/api/v1/user/auth-check HTTP/1.1
+content-type: application/json
+
+{
+    "email": "myphoto288@gmail.com",
+    "password": "12345678"
+}
+
+###
+
+POST http://127.0.0.1:8000/api/v1/user/user_info?id=1 HTTP/1.1
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNWM1NDFlYmM2MmJjNzNiYTQxMzllNTBkNWNmNTg3YWJkMTAzOWE4ZmJlMWU0Yjc4ZTAzYjk3ODY0YTBlMzcxZjUxYjQ5NGFhNWVlNDY2NDEiLCJpYXQiOjE2OTAxMTY1OTEuMTYwODY3LCJuYmYiOjE2OTAxMTY1OTEuMTYwODY4LCJleHAiOjE3MjE3Mzg5OTEuMTQ0ODEyLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.e46L9yfuRXZbYCAEAH-eQGy3vH9EUw4oct1yoD_zvisix-I7fi4QxRlbE86dC9QWvR7EDRjSbApXzJZ-zQJGcGJ4nNroR-PzssbTH8ox4UXPOLOfXDY5T9EhGTD42d9pX4bmi7jDcvSYuWL3XfsqTc7bne4TvLi0MvHeEG6F88-UgNIo0Tg6sy1e_D_48DZGXofGBwz-f20VfxnRcUckrwZDIYNFg2eM-W8pnMk22ojoCg5USG8dSTONdZ1TsLaKC9VScfQ_H7XVOTSZsS2AeHNkF_O-lKKFLc5cn3vqtDCu48J1Fp8eoHaQwk0wD4ufZ-aukL-l-RGVIwtkIdmfKdU3pOaJ3lOK8AjstFgVUlmINqRMyqUjO3_5BBuN7i3r1bv4SDCqYFaJniLX96oVMyLNz29Ya31Jz8NIWzbXtjQPYyWtqjPlEC9IRhT7Lwn6EH5SsN-X-n_k_Q_75ZeiAdRblTP4KRcKk0DeELb6Y_g7FGfrVpfDr-k00dJ0CKV3UgZ2etw7Sr8yUZpHQQlsz0vDqF2pXgT2KWqfl-4A_ky_aJyh0pe1V5ZzFcg3np-9MhBV4bdIjHKL2kk1twoXZSEz6Tr3qZKbq7dFuBU14U6Y5MOfUxCLlPpIOKTEW2FfLUOzh6qzydMaxSfypxg6buA5_hFY37lcmAusbB7Ijj8
+
+###
+
+POST http://report.pro/api/v1/user/api-logout HTTP/1.1
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODg3NzUxOWU2NjZhNjM4MjkxNjFjYzZhMzFkYjVkYzYwNWRjMzYyNTRiNDQwMGFjNWJkMDRjNDczNDIxMTA2NTQ3YzRlZDRmYWIyNDc5NmEiLCJpYXQiOjE2NDYxMzgzMzUuNzQ1MDkzLCJuYmYiOjE2NDYxMzgzMzUuNzQ1MDk4LCJleHAiOjE2Nzc2NzQzMzUuNzM4NTksInN1YiI6IjIyIiwic2NvcGVzIjpbXX0.ohVJtuPei-kkuHUz_g1dIlqWppTXEr7-Fxa-O7F3Sx5wG54-SfWkBgc4fSRhg6XB-52GZiFj8k5hX4WvBksubVAJenlQ5OjPtoQDVrnWPrmn1E7OCgB15JGaBPE9XRkP46kmtJYL_2iMgCTu01-3Ynax2-YFJRE-V9TZfgHy4sAuT1YEw29zcGMJqBwYX08_RFDuVFCfBsee_XOrbttiXMOBlmx2pJUsQtxoXRAeqGQ4KyRMGIjIZ1G76Vkvf-7jNXbLMoYJx-AOmyd_w5QtWu3r5tB3oqW2d8ZMbGyood6dSc3zDMNw5zD3Dv5UEhtUaaernFpkbe__5mZ3W8bNzg9xMTs7XfuFhih081dTNMLKs39KY9HLc28kEXg4JSyBtmQgwvRGa-wJIWDOHUzkGrfxuJyZ9drVey_iM7H9oRczCDvxZg5eAKSoYtvFgHrTZv7--6hXvxnyMSOdLcOwvFwqaBfYhfBeDiqH4Osst7MxKnTcXYFdFqnghRh1s_TI0wtJPs1KQcQMq584vdfWr1ntWXy6EwDzhFzutQOADvGYn4P_XKRFa9M1hZHaDqnZV83za4tfplvcyu_7v8A9-gLXauNgePsZGYmh3YCJZq2ZP8usppcnZAZPTJ_0LZbPo12l42u1Rs5SVihe07GLNmnJLZBqAE9mu7HcRH1a8cE
+
+###
+
+POST http://127.0.0.1:8006/api/v1/user/get-token?id=3 HTTP/1.1
