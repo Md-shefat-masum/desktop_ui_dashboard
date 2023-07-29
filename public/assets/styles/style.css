@@ -1143,6 +1143,9 @@ input.form_checkbox:checked::after {
 .table_responsive table tbody tr.active td:nth-child(1) .table_action_btns {
   display: block;
 }
+.table_responsive table tbody tr.active td:nth-child(1) .icon {
+  border: 1px solid var(--brand_white);
+}
 .table_responsive table tbody tr.active td:nth-child(1) .icon::after {
   content: "\e15b";
 }

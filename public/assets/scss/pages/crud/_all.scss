@@ -105,6 +105,7 @@
                                 display: block;
                             }
                             .icon{
+                                border: 1px solid var(--brand_white);
                                 &::after{
                                     content: '\e15b';
                                 }
