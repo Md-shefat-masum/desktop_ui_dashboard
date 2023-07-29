@@ -1137,6 +1137,9 @@ input.form_checkbox:checked::after {
   border-left-color: var(--brand_white);
   border-bottom-color: var(--brand_color2);
 }
+.table_responsive table tbody tr.active td {
+  height: 65px;
+}
 .table_responsive table tbody tr.active td:nth-child(1) .table_action_btns {
   display: block;
 }
