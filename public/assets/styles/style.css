@@ -1171,7 +1171,7 @@ input.form_checkbox:checked::after {
 .table_responsive table tbody tr td:nth-child(1) .table_action_btns {
   position: absolute;
   top: 42px;
-  left: -6px;
+  right: 0px;
   padding: 10px 10px;
   border-left: 4px solid var(--brand_white);
   width: calc(100% + 6px);
