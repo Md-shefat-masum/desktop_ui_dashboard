@@ -124,6 +124,11 @@
                         .icon {
                             cursor: pointer;
                             position: relative;
+                            border: 1px solid var(--brand_white2);
+                            height: 16px;
+                            width: 16px;
+                            border-radius: 50%;
+                            line-height: 16px;
                             &::after{
                                 content: '\e145';
                                 font-family: 'Material Symbols Outlined';

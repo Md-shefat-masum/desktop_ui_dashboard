@@ -1152,6 +1152,11 @@ input.form_checkbox:checked::after {
 .table_responsive table tbody tr td:nth-child(1) .icon {
   cursor: pointer;
   position: relative;
+  border: 1px solid var(--brand_white2);
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  line-height: 16px;
 }
 .table_responsive table tbody tr td:nth-child(1) .icon::after {
   content: "\e145";
