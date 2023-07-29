@@ -99,6 +99,7 @@
                     border-bottom-color: var(--brand_color2);
 
                     td {
+                        height: 65px;
                         &:nth-child(1) {
                             .table_action_btns {
                                 display: block;
