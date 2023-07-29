@@ -104,6 +104,11 @@
                             .table_action_btns {
                                 display: block;
                             }
+                            .icon{
+                                &::after{
+                                    content: '\e15b';
+                                }
+                            }
                         }
                     }
                 }
@@ -118,6 +123,14 @@
                     &:nth-child(1) {
                         .icon {
                             cursor: pointer;
+                            position: relative;
+                            &::after{
+                                content: '\e145';
+                                font-family: 'Material Symbols Outlined';
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                            }
                         }
 
                         .table_action_btns {

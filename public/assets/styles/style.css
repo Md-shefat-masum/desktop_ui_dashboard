@@ -1143,11 +1143,22 @@ input.form_checkbox:checked::after {
 .table_responsive table tbody tr.active td:nth-child(1) .table_action_btns {
   display: block;
 }
+.table_responsive table tbody tr.active td:nth-child(1) .icon::after {
+  content: "\e15b";
+}
 .table_responsive table tbody tr td:nth-child(1), .table_responsive table tbody tr td:nth-child(2) {
   width: 20px;
 }
 .table_responsive table tbody tr td:nth-child(1) .icon {
   cursor: pointer;
+  position: relative;
+}
+.table_responsive table tbody tr td:nth-child(1) .icon::after {
+  content: "\e145";
+  font-family: "Material Symbols Outlined";
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 .table_responsive table tbody tr td:nth-child(1) .table_action_btns {
   position: absolute;

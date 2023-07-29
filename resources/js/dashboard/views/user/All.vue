@@ -18,8 +18,7 @@
                     <tbody id="all_list">
                         <tr v-for="i in 10" :id="i" :key="i" class="">
                             <td>
-                                <span @click="active_table_row()" class="icon material-symbols-outlined"> add_circle
-                                </span>
+                                <span @click="active_table_row()" class="icon"></span>
                                 <div class="table_action_btns">
                                     <ul>
                                         <li><a @click="$event.stopPropagation(); push_windows(layout_setup.details)" href="#">Show</a></li>
