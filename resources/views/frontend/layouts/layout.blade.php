@@ -13,6 +13,7 @@
     @endif
     <link rel="stylesheet" href="/css/plugins/bootstrap.css">
     <script src="/js/plugins/turbolinks.min.js"></script>
+    <script src="/js/plugins/axios.js"></script>
     <script src="/js/frontend.js" defer></script>
 </head>
 <body>
