@@ -4,6 +4,17 @@ window.axios = axios;
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
+
+
+/*
+    Project: dashboard_laravel_10
+    User: MD Shefat Masum
+    Github: https://github.com/Md-shefat-masum
+    Date: 24 July 2023
+    Time: 16:43:59
+    File: resources\js\bootstrap.js
+*/
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
