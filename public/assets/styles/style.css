@@ -1168,6 +1168,7 @@ input.form_checkbox:checked::after {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  font-weight: bold;
 }
 .table_responsive table tbody tr td:nth-child(1) .table_action_btns {
   position: absolute;
