@@ -6,6 +6,8 @@ use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\Auth\UserRoleController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -95,3 +97,28 @@ Route::prefix('v1')
             });
         }
     );
+
+
+Route::prefix('/')
+    ->middleware(['auth:api', 'dashboard_auth'])
+    ->group(function () {
+        Route::get('/t1', function () {
+            return collect(auth()->user()->tokens)->map(function($i){return $i->id;});
+        });
+    });
+
+Route::get('/tlog', function () {
+    $user = \App\Models\User::find(1);
+    $token = $user->createToken('accessToken');
+    $user->token = $token->accessToken;
+
+    $auth_c = cookie("SESSION-TOKEN",json_encode([
+        "end_time" => Carbon::now()->addMinute(15)->toDateTimeString(),
+        "update_time" => Carbon::now()->toDateTimeString(),
+        "token" => \Illuminate\Support\Facades\Hash::make($user->id),
+    ]), Carbon::now()->addMinute(15)->format('i'), '/','',true,true,true);
+
+    $token_c = cookie("AXRF-TOKEN",$token->accessToken,Carbon::now()->addMinute(15)->format('i'),'/','',false, false, true);
+
+    return response()->json($user)->withCookie($auth_c)->withCookie($token_c);
+});
