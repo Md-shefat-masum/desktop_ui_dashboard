@@ -1,13 +1,27 @@
+body{
+    height: 100vh;
+    background: url('/assets/images/bg2.jpg');
+    background-size: cover;
+}
+.checking_auth_div{
+    height: 100vh;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    h2{
+        text-transform: capitalize;
+    }
+}
 #app {
     // border: var(--border);
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background: url('/assets/images/bg2.jpg');
+    // background: url('/assets/images/bg2.jpg');
     background-size: cover;
     padding: 10px;
     overflow: hidden;
-    
+
     .app_body {
         flex: 1;
         width: calc(100vw - 60px);

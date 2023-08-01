@@ -9,8 +9,10 @@
         </div>
         <Nav></Nav>
     </div>
-    <div v-else>
-        checking..
+    <div v-else class="checking_auth_div">
+        <h2>
+            checking access..
+        </h2>
     </div>
 </template>
 

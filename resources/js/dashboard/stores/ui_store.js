@@ -6,18 +6,18 @@ export const ui_store = defineStore({
         /* zindex increment by selecting window */
         active_windows_zindex: 50,
         active_single_window: {
-            el: 'users',
-            zindex: 50,
-            expand: false,
-            hide: false,
+            // el: 'users',
+            // zindex: 50,
+            // expand: false,
+            // hide: false,
         },
         active_windows: [
-            {
-                el: 'users',
-                zindex: 50,
-                expand: false,
-                hide: false,
-            }
+            // {
+            //     el: 'users',
+            //     zindex: 50,
+            //     expand: false,
+            //     hide: false,
+            // }
         ],
     }),
     getters: {
@@ -104,6 +104,9 @@ export const ui_store = defineStore({
                     document.onmousemove = null;
                 }
             }
+        },
+        is_in_window_list: function(el){
+            return this.active_windows.find(i=>i.el===el);
         }
     }
 })

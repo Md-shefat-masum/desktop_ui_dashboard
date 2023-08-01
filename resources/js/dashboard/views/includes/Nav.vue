@@ -245,9 +245,9 @@
 
                 <li class="nave_date_time">
                     <a href="#" class="">
-                        <span>09:47:34</span>
-                        <span class="meridian">AM</span>
-                        <span>Tue 18 Nov</span>
+                        <span>{{ hour }}:{{ min }}:{{ sec }}</span>
+                        <span class="meridian">{{ med }}</span>
+                        <span> &nbsp; {{ day }} {{ date }} {{ month }}</span>
                     </a>
                 </li>
             </ul>
@@ -261,7 +261,31 @@ import { ui_store } from '../../stores/ui_store';
 import { auth_store } from '../../stores/auth_store';
 
 export default {
+    data: () => ({
+        hour: '',
+        min: '',
+        sec: '',
+        med: '',
 
+        date: '',
+        day: '',
+        month: '',
+        year: '',
+    }),
+    created: function(){
+        let moment = this.$moment;
+        let that = this;
+        setInterval(function(){
+            that.hour = moment().format('hh')
+            that.min = moment().format('mm')
+            that.sec = moment().format('ss')
+            that.med = moment().format('a')
+
+            that.date = moment().format('DD')
+            that.day = moment().format('ddd')
+            that.month = moment().format('MMM')
+        }, 1000);
+    },
     methods: {
         ...mapActions(ui_store, {
             push_windows: "push_windows",

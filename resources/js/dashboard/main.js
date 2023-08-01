@@ -28,6 +28,7 @@ let pinia = createPinia();
 var app = createApp(App);
 
 app.config.globalProperties.$number_format = (number = 0) => new Intl.NumberFormat().format(number)
+app.config.globalProperties.$moment = moment
 
 app.use(router);
 app.use(PiniaVuePlugin);

@@ -19,14 +19,23 @@
             gap: 2px;
 
             li {
+
+                &:last-child,
+                &:first-child {
+                    a{
+                        line-height: 15px;
+                    }
+                }
+
                 a {
                     height: 20px;
                     width: 20px;
                     border: 1px solid var(--brand_white);
                     text-align: center;
                     line-height: 19px;
+
                     &:hover,
-                    &.active{
+                    &.active {
                         color: var(--brand_color2);
                         background-color: var(--brand_white);
                     }
@@ -39,9 +48,10 @@
         }
 
         .limit {
-            select{
+            select {
                 padding: 5px;
                 font-size: 13px;
+
                 option {
                     background-color: var(--brand_color);
                 }
@@ -72,6 +82,7 @@
             top: 0;
             left: 0;
             z-index: 99999;
+
             tr {
                 background-color: var(--brand_dark);
 
@@ -105,13 +116,16 @@
 
                     td {
                         height: 65px;
+
                         &:nth-child(1) {
                             .table_action_btns {
                                 display: block;
                             }
-                            .icon{
+
+                            .icon {
                                 border: 1px solid var(--brand_white);
-                                &::after{
+
+                                &::after {
                                     content: '\e15b';
                                 }
                             }
@@ -135,7 +149,8 @@
                             width: 16px;
                             border-radius: 50%;
                             line-height: 16px;
-                            &::after{
+
+                            &::after {
                                 content: '\e145';
                                 font-family: 'Material Symbols Outlined';
                                 position: absolute;

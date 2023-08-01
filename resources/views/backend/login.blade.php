@@ -68,7 +68,7 @@
             event.preventDefault();
             axios.post("/api/v1/user/dashboard-login",new FormData(event.currentTarget))
                 .then(res=>{
-                    localStorage.token = res.data.access_token;
+                    // {{-- localStorage.token = res.data.access_token; --}}
                     return location.href = "/dashboard";
                 })
                 .catch(err=>{

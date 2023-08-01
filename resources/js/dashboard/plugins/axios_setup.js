@@ -8,6 +8,9 @@ async function setToken(){
     await window.cookieStore.get('AXRF-TOKEN')
         .then(cookie=>{
             console.log('token set');
+            if(!cookie.value){
+                location.href = '/dashboard/login'
+            }
             window.axios.defaults.headers.common["Authorization"] = `Bearer ${cookie.value}`;
         })
 }

@@ -38,26 +38,25 @@ body {
 #login .login_form {
   height: 300px;
   width: 400px;
-  background-size: 1233px;
-  background-position: -416px -197px;
+  max-width: 425px;
   position: relative;
 }
 #login .login_form .bg1 {
   content: '';
-  clip-path: polygon(5px 57px, 215px 58px, 264px 5px, 395px 5px, 394px 293px, 49px 293px, 5px 248px);
+  clip-path: polygon(1% 18%, 54% 18%, 67% 1%, 99% 1%, 99% 99%, 13% 99%, 1% 82%);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   height: calc(100%);
   width: calc(100%);
-  border-radius: 20px;
+  border-radius: 17px;
   z-index: 3;
   backdrop-filter: blur(4px);
 }
 #login .login_form .bg2 {
   content: '';
-  clip-path: polygon(0 52px, 213px 52px, 267px -6px, 400px 0px, 400px 299px, 47px 299px, 0px 251px);
+  clip-path: polygon(0% 17%, 53% 17%, 66% 0%, 100% 0%, 100% 100%, 12% 100%, 0% 83%);
   background-color: var(--brand);
   position: absolute;
   top: 50%;
@@ -70,14 +69,14 @@ body {
 }
 #login .login_form .bg3 {
   content: '';
-  clip-path: polygon(5px 57px, 215px 58px, 264px 5px, 395px 5px, 394px 293px, 49px 293px, 5px 248px);
+  clip-path: polygon(1% 18%, 54% 18%, 67% 1%, 99% 1%, 99% 99%, 13% 99%, 1% 82%);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   height: calc(100%);
   width: calc(100%);
-  border-radius: 20px;
+  border-radius: 17px;
   z-index: 2;
   background-image: var(--background_image);
   background-repeat: no-repeat;
@@ -86,13 +85,15 @@ body {
 #login .login_form .heading {
   height: 43px;
   width: 254px;
-  clip-path: polygon(0px 0px, 102px 0px, 111px 6px, 162px 6px, 170px 0px, 254px 0px, 236px 5px, 202px 40px, 225px 51px, 124px 51px, 95px 40px, 54px 40px, 37px 46px, 0px 45px, 7px 39px, 7px 7px);
+  clip-path: polygon(0px 0px, 102px 0px, 111px 6px, 162px 6px, 170px 0px, 254px 0px, 236px 5px, 202px 40px, 225px 51px, 124px 51px, 95px 40px, 54px 40px, 37px 47px, 0px 47px, 7px 38px, 7px 7px);
   background: var(--brand);
+  border: 1.9px solid #aaaaaa;
+  box-sizing: border-box;
 }
 #login .login_form .heading h2 {
   margin: 0;
   font-size: 20px;
-  line-height: 43px;
+  line-height: 40px;
   padding-left: 20px;
   color: var(--text_color);
   letter-spacing: 3px;
@@ -119,7 +120,7 @@ body {
   border: 0;
   position: absolute;
   right: 0;
-  bottom: -30px;
+  bottom: -34px;
   margin: 0;
 }
 #login .login_form .form_content .form_group .input_body {
