@@ -25,6 +25,11 @@
                     border: 1px solid var(--brand_white);
                     text-align: center;
                     line-height: 19px;
+                    &:hover,
+                    &.active{
+                        color: var(--brand_color2);
+                        background-color: var(--brand_white);
+                    }
                 }
             }
         }

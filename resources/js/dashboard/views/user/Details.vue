@@ -3,10 +3,35 @@
         <div class="details custom_scroll">
             <table class="details_table" >
                 <tbody>
-                    <tr v-for="i in ['first name','last name','email','phone number','address']" :key="i">
-                        <td>{{ i }}</td>
+                    <tr v-for="i in ['first_name','last_name','user_name','email','mobile_number']" :key="i">
+                        <td>{{ i.replaceAll('_',' ') }}</td>
                         <td>:</td>
-                        <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, culpa.</td>
+                        <td>{{ user[i] }}</td>
+                    </tr>
+                    <tr>
+                        <td>roles</td>
+                        <td>:</td>
+                        <td>
+                            <span v-for="role in user.roles" :key="role.id">
+                                {{ role.name }}
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>permissions</td>
+                        <td>:</td>
+                        <td>
+                            <span v-for="permission in user.permissions" :key="permission.id">
+                                {{ permission.title }}
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>photo</td>
+                        <td>:</td>
+                        <td>
+                            <img style="height: 60px;" :src="user.photo_url" alt="">
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -17,6 +42,7 @@
 <script>
 import { mapActions, mapState } from 'pinia';
 import DetailsLayout from './components/DetailsLayout.vue';
+import { user_store } from '../../stores/user_store';
 export default {
     components: { DetailsLayout },
     data: function(){
@@ -25,9 +51,10 @@ export default {
     },
     created: function(){
     },
-    methods: { 
+    methods: {
     },
     computed: {
+        ...mapState(user_store,['user'])
     }
 }
 </script>

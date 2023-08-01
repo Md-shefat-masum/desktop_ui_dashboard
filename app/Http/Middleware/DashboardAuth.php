@@ -17,14 +17,16 @@ class DashboardAuth
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next)
     {
-        $auth_session = request()->cookie("auth_session");
-        $axrf_token = request()->cookie("axrf_token");
+        $auth_session = request()->cookie("SESSION-TOKEN");
+        $axrf_token = request()->cookie("AXRF-TOKEN");
         $user = auth()->user();
 
-        if(!$auth_session || !$axrf_token){
-            return route('/dashboard/login');
+        if ((!$auth_session && !$axrf_token) || ($axrf_token && !$auth_session) || ($auth_session && !$axrf_token) || (!$auth_session || !$axrf_token)) {
+            $auth_c = cookie("SESSION-TOKEN");
+            $token_c = cookie("AXRF-TOKEN");
+            return redirect()->route('dashboard_login')->withCookie($auth_c)->withCookie($token_c);
         }
 
         try {
@@ -40,27 +42,27 @@ class DashboardAuth
 
             if (!$check_token_time_over && $time_diff <= 10) {
                 auth()->user()->token()->revoke();
-                $token_c = cookie("axrf_token", auth()->user()->createToken('accessToken')->accessToken);
-                $auth_c = cookie("auth_session", json_encode([
+                $token_c = cookie("AXRF-TOKEN", auth()->user()->createToken('accessToken')->accessToken,15,'/','',false,false,true);
+                $auth_c = cookie("SESSION-TOKEN", json_encode([
                     "end_time" => Carbon::now()->addMinute(15)->toDateTimeString(),
                     "update_time" => Carbon::now()->toDateTimeString(),
                     "token" => \Illuminate\Support\Facades\Hash::make(auth()->user()->id),
-                ]), Carbon::now()->addMinute(15)->format('i'), '/', '', false, false, true);
+                ]), Carbon::now()->addMinute(15)->format('i'), '/', '', true, true, false);
 
                 return $next($request)->withCookie($auth_c)->withCookie($token_c);
             }
 
             if ($check_token_time_over || !$check_token) {
                 auth()->user()->token()->revoke();
-                $auth_c = cookie("auth_session");
-                $token_c = cookie("axrf_token");
+                $auth_c = cookie("SESSION-TOKEN");
+                $token_c = cookie("AXRF-TOKEN");
                 return response()->json("unauthorized", 401)->withCookie($auth_c)->withCookie($token_c);
             }
         } catch (\Throwable $th) {
             return response()->json(["unauthorized", $th->getMessage()], 401);
         }
 
-        $auth_c = cookie("auth_session", json_encode([
+        $auth_c = cookie("SESSION-TOKEN", json_encode([
             "end_time" => Carbon::now()->addMinute(15)->toDateTimeString(),
             "update_time" => Carbon::now()->toDateTimeString(),
             "token" => \Illuminate\Support\Facades\Hash::make(auth()->user()->id),

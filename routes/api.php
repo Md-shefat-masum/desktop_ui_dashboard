@@ -32,6 +32,7 @@ Route::prefix('v1')
                 ->middleware(['guest:api'])
                 ->group(function () {
                     Route::post('/get-token', 'get_token');
+                    Route::post('/dashboard-login', 'dashboard_login');
                     Route::post('/api-login', 'login');
                     Route::post('/api-register', 'register');
                     Route::get('/auth-check', 'auth_check');
@@ -40,7 +41,7 @@ Route::prefix('v1')
                     Route::post('/logout-from-all-devices', 'logout_from_all_devices');
                 });
 
-            Route::middleware(['auth:api'])->group(function () {
+            Route::middleware(['auth:api','dashboard_auth'])->group(function () {
                 Route::controller(ApiLoginController::class)
                     ->prefix('/user')
                     ->group(function () {
@@ -57,7 +58,6 @@ Route::prefix('v1')
                 Route::controller(UserController::class)->prefix('/user')
                     ->group(function () {
                         Route::get('/all', 'all');
-                        Route::get('/{id}', 'show');
                         Route::post('/store', 'store');
                         Route::post('/canvas-store', 'canvas_store');
                         Route::post('/update', 'update');
@@ -65,6 +65,7 @@ Route::prefix('v1')
                         Route::post('/destroy', 'destroy');
                         Route::post('/restore', 'restore');
                         Route::post('/bulk-import', 'bulk_import');
+                        Route::get('/{id}', 'show');
                     });
 
                 Route::controller(UserRoleController::class)->prefix('user-role')
@@ -106,6 +107,8 @@ Route::prefix('/')
             return collect(auth()->user()->tokens)->map(function($i){return $i->id;});
         });
     });
+
+
 
 Route::get('/tlog', function () {
     $user = \App\Models\User::find(1);

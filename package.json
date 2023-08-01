@@ -16,6 +16,9 @@
     },
     "dependencies": {
         "chart.js": "^4.3.0",
+        "debounce": "^1.2.1",
+        "filefy": "^0.1.11",
+        "moment": "^2.29.4",
         "pinia": "^2.1.4",
         "vue": "^3.2.41",
         "vue-router": "^4.2.4"

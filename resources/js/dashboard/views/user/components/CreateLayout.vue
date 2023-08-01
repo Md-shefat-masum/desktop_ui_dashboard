@@ -1,8 +1,6 @@
 <template>
-    <div :class="`explore_window ${is_expand && 'expand'} ${is_hide && 'hide'} ${!is_in_window_list && 'hide'}`" 
-        @click="push_windows(page, $event)" 
-        :style="{zIndex: zindex}"
-        :id="page">
+    <div :class="`explore_window ${is_expand && 'expand'} ${is_hide && 'hide'} ${!is_in_window_list && 'hide'}`"
+        @click="push_windows(page, $event)" :style="{ zIndex: zindex }" :id="page">
         <div class="action_bar">
             <div class="navigation">
                 <ul>
@@ -10,13 +8,16 @@
                 </ul>
             </div>
             <div class="title" :id="`${page}_drag`">
-                <h2>{{page.replaceAll('_',' ')}}</h2>
+                <h2>{{ page.replaceAll('_', ' ') }}</h2>
             </div>
             <div class="control">
                 <ul>
-                    <li><a href="#" @click="$event.stopPropagation(); toggle_expand(page)"><span class="material-symbols-outlined fill">zoom_out_map</span></a></li>
-                    <li><a href="#" @click="$event.stopPropagation(); toggle_hide(page)"><span class="material-symbols-outlined fill">remove</span></a></li>
-                    <li><a href="#" @click="$event.stopPropagation(); close_page(page)"><span class="material-symbols-outlined fill">close</span></a></li>
+                    <li><a href="#" @click="$event.stopPropagation(); toggle_expand(page)"><span
+                                class="material-symbols-outlined fill">zoom_out_map</span></a></li>
+                    <li><a href="#" @click="$event.stopPropagation(); toggle_hide(page)"><span
+                                class="material-symbols-outlined fill">remove</span></a></li>
+                    <li><a href="#" @click="$event.stopPropagation(); close_page(page)"><span
+                                class="material-symbols-outlined fill">close</span></a></li>
                 </ul>
             </div>
         </div>
@@ -27,7 +28,7 @@
             <div class="action_btns">
                 <ul>
                     <li>
-                        <a href="#">
+                        <a @click.prevent="store_user" href="user/store">
                             <span class="material-symbols-outlined fill">upload</span>
                             <div class="text">Submit</div>
                         </a>
@@ -48,23 +49,25 @@
 import { mapActions, mapState } from 'pinia';
 import { ui_store } from '../../../stores/ui_store';
 import layout_setup from './layout_setup';
+import { user_store } from '../../../stores/user_store';
 let page = layout_setup.create;
 export default {
-    data: function(){
+    data: function () {
         return {
             page: page,
         }
     },
-    created: function(){  
+    created: function () {
     },
-    mounted: function(){
+    mounted: function () {
         let that = this;
         setTimeout(() => {
             that.init_drag(page);
         }, 200);
     },
     methods: {
-        ...mapActions(ui_store,["init_drag","push_windows","toggle_expand","toggle_hide","close_page"]),
+        ...mapActions(ui_store, ["init_drag", "push_windows", "toggle_expand", "toggle_hide", "close_page"]),
+        ...mapActions(user_store, ['store_user']),
         active_table_row() {
             let e = event.target.parentNode.parentNode;
             [...document.querySelectorAll('tbody tr')].forEach(el => {
@@ -76,20 +79,20 @@ export default {
         },
     },
     computed: {
-        ...mapState(ui_store,[page+'_hide', page+'_expand', 'active_windows', 'active_single_window']),
-        is_in_window_list: function(){
-            return this.active_windows.find(i=>i.el==page);
+        ...mapState(ui_store, [page + '_hide', page + '_expand', 'active_windows', 'active_single_window']),
+        is_in_window_list: function () {
+            return this.active_windows.find(i => i.el == page);
         },
-        is_active: function(){
+        is_active: function () {
             return this.page == this.active_single_window.el;
         },
-        is_expand: function(){
+        is_expand: function () {
             return this.is_in_window_list?.expand;
         },
-        is_hide: function(){
+        is_hide: function () {
             return this.is_in_window_list?.hide;
         },
-        zindex: function(){
+        zindex: function () {
             return this.is_in_window_list?.zindex;
         },
     }

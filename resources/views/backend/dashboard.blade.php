@@ -8,6 +8,7 @@
     <title>Dashbaord</title>
     <link rel="stylesheet" href="/assets/fonts/google_icon/google_icons.css">
     <link rel="stylesheet" href="/assets/styles/style.css">
+    <script src="{{ asset('js/plugins/sweetalert.js') }}"></script>
     @vite('resources/js/dashboard/main.js')
 </head>
 <body>

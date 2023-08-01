@@ -16,13 +16,13 @@
                         </tr>
                     </thead>
                     <tbody id="all_list">
-                        <tr v-for="i in 10" :id="i" :key="i" class="">
+                        <tr v-for="i in users.data" :id="i.id" :key="i.id" class="">
                             <td>
                                 <span @click="active_table_row()" class="icon"></span>
                                 <div class="table_action_btns">
                                     <ul>
-                                        <li><a @click="$event.stopPropagation(); push_windows(layout_setup.details)" href="#">Show</a></li>
-                                        <li><a @click="$event.stopPropagation(); push_windows(layout_setup.edit)" href="#">Edit</a></li>
+                                        <li><a @click.prevent="$event.stopPropagation(); push_windows(layout_setup.details); fetch_user(i.id)" :href="'/user/'+i.id">Show</a></li>
+                                        <li><a @click.prevent="$event.stopPropagation(); push_windows(layout_setup.edit)" href="#">Edit</a></li>
                                         <li><a href="#">Delete</a></li>
                                     </ul>
                                 </div>
@@ -30,13 +30,13 @@
                             <td>
                                 <input type="checkbox">
                             </td>
-                            <td>1</td>
-                            <td>Md Abdullah</td>
-                            <td>Mubassir</td>
-                            <td>abm@ex.com</td>
-                            <td>+880232353423</td>
+                            <td>{{ i.id }}</td>
+                            <td>{{ i.first_name }}</td>
+                            <td>{{ i.last_name }}</td>
+                            <td>{{ i.email }}</td>
+                            <td>{{ i.mobile_number }}</td>
                             <td>
-                                <img height="30px" src="/assets/images/avatar.png" alt="">
+                                <img style="height: 30px;" :src="i.photo_url" alt="">
                             </td>
                         </tr>
                     </tbody>
@@ -44,18 +44,17 @@
             </div>
             <div class="pagination_part">
                 <ul class="pagination">
-                    <li><a href="#">&laquo;</a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">&raquo;</a></li>
+                    <li v-for="paginate in users.links" :key="paginate.label">
+                        <a @click.prevent="goto_page(paginate.url)" :class="{active:paginate.active}" :href="paginate.url">
+                            <span v-html="paginate.label.replaceAll(/Previous|Next/ig,'')"></span>
+                        </a>
+                    </li>
                 </ul>
                 <div class="showing">
-                    10 - 20 of 100
+                    {{ users.from }} - {{ users.to }} of {{ users.total }}
                 </div>
                 <div class="limit">
-                    <select name="" id="">
+                    <select name="" @change="set_paginate($event.target.value)" :value="users.per_page" id="">
                         <option value="10">10</option>
                         <option value="25">25</option>
                         <option value="50">50</option>
@@ -73,6 +72,8 @@ import { mapActions, mapState } from 'pinia';
 import AllLayout from './components/AllLayout.vue';
 import layout_setup from './components/layout_setup';
 import { ui_store } from '../../stores/ui_store';
+import { user_store } from '../../stores/user_store';
+
 export default {
     components: { AllLayout },
     data: function(){
@@ -81,11 +82,18 @@ export default {
         }
     },
     created: function(){
+        this.fetch_users();
     },
     watch: {
     },
     methods: {
         ...mapActions(ui_store,["push_windows"]),
+        ...mapActions(user_store,["fetch_users","set_page","set_search_key","set_paginate", "fetch_user"]),
+
+        goto_page: function(url){
+            url && this.set_page(new URL(url).searchParams.get(`page`));
+        },
+
         active_table_row: function() {
             let e = event.target.parentNode.parentNode;
             [...document.querySelectorAll('tbody tr')].forEach(el => {
@@ -97,6 +105,7 @@ export default {
         },
     },
     computed: {
+        ...mapState(user_store,['users','page']),
     }
 }
 </script>

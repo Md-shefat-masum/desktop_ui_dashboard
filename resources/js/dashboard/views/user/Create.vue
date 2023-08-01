@@ -1,43 +1,29 @@
 <template>
     <create-layout>
         <div class="form custom_scroll">
-            <form action="">
+            <form id="user_create_form" action="">
                 <div class="form_input_grid">
-                    <div class="form_group" v-for="i in 15" :key="i">
-                        <label for="first_name">
-                            <span class="material-symbols-outlined "> label_important </span>
-                            <div class="text">
-                                first name
-                            </div>
-                        </label>
-                        <input :id="`first_name${i}`" name="first_name" class="form_input" type="text" >
-                    </div>
+                    <input-field :name="'first_name'" :label="`First Name`"></input-field>
+                    <input-field :name="'last_name'" :label="`Last Name`"></input-field>
+                    <input-field :name="'user_name'" :label="`User Name`"></input-field>
+                    <input-field :name="'email'" :label="`Email`"></input-field>
+                    <input-field :name="'mobile_number'" :label="`Contact Number`"></input-field>
+                    <input-field :name="'password'" :label="`Password`" :type="`password`"></input-field>
+
                     <div class="form_group">
-                        <label for="first_name">
-                            <span class="material-symbols-outlined "> label_important </span>
-                            <div class="text required">
-                                Select 
-                            </div>
-                        </label>
-                        <select name="" id="">
-                            <option value="">one</option>
-                            <option value="">two</option>
-                            <option value="">three</option>
-                        </select>
-                        <div class="alert_message">
-                            <p>this field is required</p>
+                        <div>
+                            <label for="select">
+                                <span class="material-symbols-outlined "> label_important </span>
+                                <div class="text required">
+                                    User Role
+                                </div>
+                            </label>
+                            <select name="user_role_id" id="user_role_id">
+                                <option value="">one</option>
+                                <option value="">two</option>
+                                <option value="">three</option>
+                            </select>
                         </div>
-                    </div>
-                </div>
-                <div class="form_input_full">
-                    <div class="form_group">
-                        <label for="first_name">
-                            <span class="material-symbols-outlined "> label_important </span>
-                            <div class="text">
-                                descriptin
-                            </div>
-                        </label>
-                        <textarea name="" id="" cols="30" rows="10"></textarea>
                     </div>
                 </div>
             </form>
@@ -48,8 +34,10 @@
 <script>
 import { mapActions, mapState } from 'pinia';
 import CreateLayout from './components/CreateLayout.vue';
+import InputField from './components/InputField.vue';
+import { user_store } from '../../stores/user_store';
 export default {
-    components: { CreateLayout },
+    components: { CreateLayout, InputField },
     data: function(){
         return {
 
@@ -58,9 +46,10 @@ export default {
     created: function(){
     },
     methods: {
+        ...mapActions(user_store, ['store_user'])
     },
     computed: {
-        
+
     }
 }
 </script>

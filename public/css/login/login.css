@@ -3,6 +3,7 @@
   --background_image: url("../../images/bg7.jpg");
   --text_color: #dcdfe4;
   --text_hover: #f5f5f5;
+  --text_error: #F44336;
 }
 @font-face {
   font-family: 'ubuntu';
@@ -118,7 +119,8 @@ body {
   border: 0;
   position: absolute;
   right: 0;
-  bottom: 0;
+  bottom: -30px;
+  margin: 0;
 }
 #login .login_form .form_content .form_group .input_body {
   display: flex;
@@ -134,6 +136,13 @@ body {
   padding: 10px 10px;
   font-size: 14px;
   font-family: "ubuntu";
+}
+#login .login_form .form_content .form_group.form_group_error .input_body .icon {
+  color: var(--text_error);
+  font-weight: bold;
+}
+#login .login_form .form_content .form_group.form_group_error label::after {
+  background-color: var(--text_error);
 }
 #login .login_form .form_content .form_group label {
   position: absolute;
@@ -160,6 +169,7 @@ body {
   right: 5px;
   bottom: 0;
   clip-path: polygon(20px 0px, 100% 0%, 100% 100%, 0% 100%);
+  transition-duration: 0.3s;
 }
 #login .login_form .form_content .form_group .buttons {
   text-align: right;
@@ -177,6 +187,9 @@ body {
   background-color: transparent;
   cursor: pointer;
 }
+#login .login_form .form_content .form_group .buttons button:disabled {
+  cursor: progress;
+}
 #login .login_form .form_content .form_group .buttons button .text {
   position: relative;
   z-index: 9;
@@ -191,8 +204,8 @@ body {
   width: 100%;
   position: absolute;
   right: 0px;
-  bottom: 0;
-  clip-path: polygon(20px 0px, 100% 0%, 100% 100%, 0% 100%);
+  bottom: 0px;
+  clip-path: polygon(0px 0px, 100% 0%, 100% 100%, 20px 100%);
 }
 #login .login_form .form_content .form_group .buttons button:nth-child(1) {
   padding-right: 10px;
@@ -201,6 +214,11 @@ body {
   padding-left: 10px;
 }
 #login .login_form .form_content .form_group .buttons button:nth-child(2)::after {
-  clip-path: polygon(0px 0px, calc(100% - 20px) 0px, 100% 100%, 0% 100%);
+  clip-path: polygon(0px 0px, 100% 0px, calc(100% - 20px) 100%, 0% 100%);
+}
+#login .login_form .form_content .form_group .error {
+  color: var(--text_error);
+  font-size: 14px;
+  padding: 5px;
 }
 /*# sourceMappingURL=./login.css.map */

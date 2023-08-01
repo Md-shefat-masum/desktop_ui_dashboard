@@ -1,6 +1,6 @@
 <template>
-    <div :class="`explore_window ${is_expand && 'expand'} ${is_hide && 'hide'} ${!is_in_window_list && 'hide'}`" 
-        @click="push_windows(page, $event)" 
+    <div :class="`explore_window ${is_expand && 'expand'} ${is_hide && 'hide'} ${!is_in_window_list && 'hide'}`"
+        @click="push_windows(page, $event)"
         :style="{zIndex: zindex}"
         @load="console.log('hi')"
         :id="page">
@@ -9,7 +9,7 @@
                 <ul>
                     <li class="search_li">
                         <!-- <a href="#" @click="show_search = !show_search"><span class="material-symbols-outlined fill">search</span></a> -->
-                        <input class="search" placeholder="search.." :class="{active: show_search}" id="table_search_box" type="search">
+                        <input class="search" @keyup="set_search_key($event.target.value)" placeholder="search.." :class="{active: show_search}" id="table_search_box" type="search">
                     </li>
                 </ul>
             </div>
@@ -58,6 +58,7 @@
 import { mapActions, mapState } from 'pinia';
 import { ui_store } from '../../../stores/ui_store';
 import layout_setup from './layout_setup';
+import { user_store } from '../../../stores/user_store';
 let page = layout_setup.all;
 
 export default {
@@ -68,7 +69,7 @@ export default {
             show_search: false,
         }
     },
-    created: function(){  
+    created: function(){
     },
     mounted: function(){
         let that = this;
@@ -80,6 +81,7 @@ export default {
     },
     methods: {
         ...mapActions(ui_store,["init_drag","push_windows","toggle_expand","toggle_hide","close_page"]),
+        ...mapActions(user_store,['set_search_key']),
     },
     computed: {
         ...mapState(ui_store,[page+'_hide', page+'_expand', 'active_windows', 'active_single_window']),

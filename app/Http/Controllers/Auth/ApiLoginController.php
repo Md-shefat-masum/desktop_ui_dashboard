@@ -28,7 +28,7 @@ class ApiLoginController extends Controller
 
     public function auth_check()
     {
-        if (Auth::check()) {
+        if (Auth::guard('api')->check()) {
             return response()->json([
                 "auth_status" => true,
                 "auth_information" => Auth::user(),
@@ -47,6 +47,39 @@ class ApiLoginController extends Controller
         return response()->json(['message' => 'All active session has been closed'], 200);
     }
 
+    function dashboard_login()
+    {
+        $validator = Validator::make(request()->all(), [
+            'email' => ['required', 'exists:users'],
+            'password' => ['required'],
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'err_message' => 'validation error',
+                'data' => $validator->errors(),
+            ], 422);
+        }
+
+        $user = User::where('email', request()->email)->orWhere('user_name', request()->email)->with('roles')->first();
+        if ($user && Hash::check(request()->password, $user->password)) {
+            // auth()->login($user, request()->remember);
+            DB::table('oauth_access_tokens')->where('user_id',$user->id)->where('revoked',0)->update(['revoked'=>1]);
+            $data['access_token'] = $user->createToken('accessToken')->accessToken;
+            $data['user'] = $user;
+
+            $auth_c = cookie("SESSION-TOKEN", json_encode([
+                "end_time" => Carbon::now()->addMinute(15)->toDateTimeString(),
+                "update_time" => Carbon::now()->toDateTimeString(),
+                "token" => \Illuminate\Support\Facades\Hash::make($user->id),
+            ]), Carbon::now()->addMinute(15)->format('i'), '/', '', true);
+
+            $token_c = cookie("AXRF-TOKEN", $data['access_token'], Carbon::now()->addMinute(15)->format('i'), '/', '', false, false, false);
+
+            return response()->json($data, 200)->withCookie($auth_c)->withCookie($token_c);
+        }
+    }
+
     public function login(Request $request)
     {
 
@@ -61,7 +94,6 @@ class ApiLoginController extends Controller
                 'err_message' => 'validation error',
                 'data' => $validator->errors(),
             ], 422);
-
         } else {
 
             // $active_user = DB::table('oauth_access_tokens')->where('revoked', 0)->first();
@@ -381,17 +413,17 @@ class ApiLoginController extends Controller
     {
         $auth_status = false;
         $auth_information = [];
-        if(Auth::check()){
+        if (Auth::check()) {
             $auth_status = true;
-            $auth_information = User::where('id',Auth::user()->id)
+            $auth_information = User::where('id', Auth::user()->id)
                 ->with([
-                    'roles'=>function($q){
+                    'roles' => function ($q) {
                         return $q->select([
                             'name',
                             'role_serial'
                         ]);
                     },
-                    'permissions'=>function($q){
+                    'permissions' => function ($q) {
                         return $q->select([
                             'title',
                             'permission_serial'

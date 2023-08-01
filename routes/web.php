@@ -39,9 +39,10 @@ Route::get('/contact', function () {
     return view('frontend.pages.contact');
 });
 
-
-
 Route::get('/dashboard/login', function () {
+    if(request()->cookie("XSRF-TOKEN") && request()->cookie("SESSION-TOKEN")){
+        return redirect('/dashboard');
+    }
     return view('backend.login');
 })->name('dashboard_login');
 

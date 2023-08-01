@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div id="app" v-if="auth_status">
         <div class="app_body">
             <!-- <component v-for="i in active_windows" :key="i.el" :is="i.el" v-bind="{el: i}"></component> -->
             <UserRender></UserRender>
@@ -9,15 +9,19 @@
         </div>
         <Nav></Nav>
     </div>
+    <div v-else>
+        checking..
+    </div>
 </template>
 
 <script setup>
 
 </script>
 <script>
-import { mapState } from 'pinia';
+import { mapActions, mapState } from 'pinia';
 import { useCounterStore } from './stores/counter';
 import { ui_store } from './stores/ui_store';
+import { auth_store } from './stores/auth_store';
 
 import Nav from './views/includes/Nav.vue';
 
@@ -31,10 +35,17 @@ export default {
         // this.$watch('active_windows',function(v){
         //     console.log(v);
         // })
+        this.auth_check();
+    },
+    data: ()=>({
+
+    }),
+    methods: {
+        ...mapActions(auth_store,['auth_check']),
     },
     computed: {
         ...mapState(useCounterStore, ['active_windows']),
-        ...mapState(ui_store, ['active_windows']),
+        ...mapState(auth_store, ['auth_status']),
     }
 }
 </script>

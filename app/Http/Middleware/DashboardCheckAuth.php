@@ -22,8 +22,10 @@ class DashboardCheckAuth
         $session_token = request()->cookie("SESSION-TOKEN");
         $axrf_token = request()->cookie("AXRF-TOKEN");
 
-        if(!$session_token || !$axrf_token){
-            return redirect()->route('dashboard_login');
+        if ((!$session_token && !$axrf_token) || ($axrf_token && !$session_token) || ($session_token && !$axrf_token) || (!$session_token || !$axrf_token)) {
+            $auth_c = cookie("SESSION-TOKEN");
+            $token_c = cookie("AXRF-TOKEN");
+            return redirect()->route('dashboard_login')->withCookie($auth_c)->withCookie($token_c);
         }
 
         try {
@@ -36,11 +38,10 @@ class DashboardCheckAuth
                 $token_c = cookie("AXRF-TOKEN");
                 return redirect()->route('dashboard_login')->withCookie($auth_c)->withCookie($token_c);
             }
-
         } catch (\Throwable $th) {
             $auth_c = cookie("SESSION-TOKEN");
-                $token_c = cookie("AXRF-TOKEN");
-                return redirect()->route('dashboard_login')->withCookie($auth_c)->withCookie($token_c);
+            $token_c = cookie("AXRF-TOKEN");
+            return redirect()->route('dashboard_login')->withCookie($auth_c)->withCookie($token_c);
         }
 
         return $next($request);

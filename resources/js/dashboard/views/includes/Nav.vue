@@ -11,24 +11,36 @@
                             <div class="top">
                                 <div class="profile">
                                     <div class="img">
-                                        <img src="/assets/images/avatar.png" alt="">
+                                        <img v-if="auth_information.photo_url" :src="auth_information.photo_url" alt="">
+                                        <img v-else src="/assets/images/avatar.png" alt="">
                                     </div>
                                     <div class="profile_info">
-                                        <h2>Md. Abudllah</h2>
-                                        <h3>Super admin</h3>
+                                        <h2>
+                                            {{ auth_information.first_name }}
+                                            {{ auth_information.last_name }}
+                                        </h2>
+                                        <h3>
+                                            <span v-for="role in auth_information.roles" :key="role.serial">
+                                                {{ role.name }}
+                                            </span>
+                                        </h3>
                                     </div>
                                 </div>
                                 <div class="action">
                                     <ul>
-                                        <li><a href="#"><span
-                                                    class="material-symbols-outlined fill">manage_accounts</span></a>
+                                        <li>
+                                            <a href="#">
+                                                <span class="material-symbols-outlined fill">manage_accounts</span>
+                                            </a>
                                         </li>
-                                        <li><a href="#"><span class="material-symbols-outlined fill">settings</span></a>
+                                        <li>
+                                            <a href="#"><span class="material-symbols-outlined fill">settings</span></a>
                                         </li>
-                                        <li><a href="#"><span class="material-symbols-outlined fill">lock</span></a>
-                                        </li>
-                                        <li><a href="#"><span
-                                                    class="material-symbols-outlined fill">power_settings_new</span></a>
+                                        <!-- <li>
+                                            <a href="#"><span class="material-symbols-outlined fill">lock</span></a>
+                                        </li> -->
+                                        <li>
+                                            <a @click.prevent="logout" href="#"><span class="material-symbols-outlined fill">power_settings_new</span></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -246,6 +258,7 @@
 <script>
 import { mapActions, mapState } from 'pinia';
 import { ui_store } from '../../stores/ui_store';
+import { auth_store } from '../../stores/auth_store';
 
 export default {
 
@@ -254,10 +267,12 @@ export default {
             push_windows: "push_windows",
             toggle_hide: "toggle_hide",
             close_page: "close_page",
-        })
+        }),
+        ...mapActions(auth_store,['logout']),
     },
     computed: {
-        ...mapState(ui_store, ['active_windows'])
+        ...mapState(ui_store, ['active_windows']),
+        ...mapState(auth_store, ['auth_information']),
     }
 }
 </script>

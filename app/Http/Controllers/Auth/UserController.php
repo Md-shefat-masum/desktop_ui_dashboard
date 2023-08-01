@@ -16,9 +16,9 @@ class UserController extends Controller
 {
     public function all()
     {
-        $paginate = (int) request()->paginate;
-        $orderBy = request()->orderBy;
-        $orderByType = request()->orderByType;
+        $paginate = (int) request()->paginate ?? 10;
+        $orderBy = request()->orderBy ?? 'id';
+        $orderByType = request()->orderByType ?? 'ASC';
 
         $status = 1;
         if (request()->has('status')) {
